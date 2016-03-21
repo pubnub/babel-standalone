@@ -49,7 +49,7 @@ export function transformFromAst(ast, code, options) {
 
 // All the plugins we should bundle
 export const availablePlugins = {
-  'blocks': require('babel-plugin-blocks')
+  'blocks': require('babel-plugin-blocks').default
 };
 
 // All the presets we should bundle
