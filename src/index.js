@@ -49,6 +49,7 @@ export function transformFromAst(ast, code, options) {
 
 // All the plugins we should bundle
 export const availablePlugins = {
+  'transform-es2015-modules-commonjs': require('babel-plugin-transform-es2015-modules-commonjs'),
   'blocks': require('babel-plugin-blocks').default
 };
 
