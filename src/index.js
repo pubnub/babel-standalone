@@ -27,6 +27,15 @@ function processOptions(options) {
       }
       return plugin;
     } else {
+      // Could be plugin name with options
+      if (typeof pluginName[0] === 'string') {
+        const name = pluginName[0];
+        pluginName[0] = availablePlugins[name];
+        if (!pluginName[0]) {
+          throw new Error(`Invalid plugin specified in Babel options: "${name}"`);
+        }
+      }
+
       // Could be an actual plugin module
       return pluginName;
     }

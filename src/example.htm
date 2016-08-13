@@ -7,8 +7,7 @@
 <body>
   Input:
   <textarea id="input" style="width: 100%" rows="10">
-const getMessage = () => 'Hello World';
-const someDiv = <div>{getMessage()}</div>;
+export default (request) => request.ok();
 </textarea>
 
   Transformed code using Babel <strong id="version"></strong>:
@@ -24,7 +23,14 @@ const someDiv = <div>{getMessage()}</div>;
     function transform() {
       try {
         outputEl.innerHTML = Babel.transform(inputEl.value, {
-          presets: ['es2015', 'react', 'stage-0']
+          plugins: [
+            'blocks',
+            [ 'transform-es2015-modules-commonjs', {
+                'allowTopLevelThis': false,
+                'strict': false,
+                'loose': false,
+            } ],
+          ],
         }).code;
       } catch (ex) {
         outputEl.innerHTML = 'ERROR: ' + ex.message;
